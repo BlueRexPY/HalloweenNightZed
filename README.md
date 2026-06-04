@@ -48,113 +48,34 @@ Then restart Zed and select it from the theme selector.
 
 ---
 
-## 🛠️ Debugvelopment / Debugging
+## 🛠️ Debugging
 
-### Prerequisites
+See the full debugging guide: **[docs/DEBUG.md](./docs/DEBUG.md)**
 
-- [Zed](https://zed.dev) installed
-- Git
-
-### Setup
+Quick reference:
 
 ```bash
-# Clone the repo
-git clone https://github.com/BlueRexPY/HalloweenNightZed.git
-cd HalloweenNightZed
+# Edit theme → install as dev extension → reload
+vim themes/halloween-night.json      # 1. Edit
+# In Zed: Ctrl+Shift+P → "zed: install dev extension" → pick this dir  # 2. Install
+# In Zed: Ctrl+Shift+P → "zed: reload"                                   # 3. Reload
 ```
-
-### Debug the theme locally
-
-**Option A – Dev Extension (recommended)**
-
-1. Open Zed in this project directory
-2. Run `zed: install dev extension` from the command palette
-3. Select this directory
-4. The theme is now loaded from your local source
-
-**Option B – Local theme copy**
-
-```bash
-cp themes/halloween-night.json ~/.config/zed/themes/
-```
-
-Restart Zed to pick up changes. Re-copy the file after each edit.
-
-**Option C – Run Zed in foreground for logs**
-
-```bash
-zed --foreground
-```
-
-This prints extension-related output to the terminal, useful for debugging.
-
-### Making changes
-
-Edit `themes/halloween-night.json`. The file follows the [Zed theme schema v0.2.0](https://zed.dev/docs/themes).
-
-**Key sections:**
-- `style.*` – UI chrome colors (panels, tabs, status bar, etc.)
-- `style.players[]` – Cursor and selection colors per collaborator
-- `style.syntax.*` – Tree-sitter–based syntax highlighting captures
-- `style.terminal.ansi.*` – Terminal color palette
-
-**Workflow:**
-1. Edit the JSON
-2. Restart Zed (or re-run `zed: install dev extension`)
-3. Preview in the theme selector
 
 ---
 
 ## 📦 Publishing
 
-### Prerequisites
+See the full publishing guide: **[docs/PUBLISH.md](./docs/PUBLISH.md)**
 
-- Your extension repository must be **public** on GitHub
-- Your extension must include an accepted [license](https://zed.dev/docs/extensions/developing-extensions#extension-license-requirements) (this repo uses MIT ✅)
-- Your `extension.toml` must have a unique `id` and correct metadata
-- Test your extension **locally** as a dev extension first
-
-### Step-by-step Publishing
-
-1. **Fork** the [zed-industries/extensions](https://github.com/zed-industries/extensions) repo to your personal GitHub account
-
-2. **Clone** your fork:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/extensions.git
-   cd extensions
-   git submodule init
-   git submodule update
-   ```
-
-3. **Add your extension as a submodule:**
-   ```bash
-   git submodule add https://github.com/BlueRexPY/HalloweenNightZed.git extensions/halloween-night-theme
-   ```
-
-4. **Update `extensions.toml`** at the repo root:
-   ```toml
-   [halloween-night-theme]
-   submodule = "extensions/halloween-night-theme"
-   version = "0.3.3"
-   ```
-
-5. **Sort the extensions list:**
-   ```bash
-   pnpm sort-extensions
-   ```
-
-6. **Commit and open a PR** against `zed-industries/extensions`
-
-7. Once merged, your extension will be **automatically published** to the Zed extension registry.
-
-### Updating an existing extension
+Quick reference:
 
 ```bash
-cd extensions
-git submodule update --remote extensions/halloween-night-theme
-# Update the version in extensions.toml
-pnpm sort-extensions
-# Commit and open a PR
+# 1. Fork zed-industries/extensions
+# 2. Clone your fork
+# 3. Add this repo as a submodule
+# 4. Register in extensions.toml
+# 5. pnpm sort-extensions
+# 6. Open a PR
 ```
 
 ---
