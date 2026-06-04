@@ -63,23 +63,6 @@ vim themes/halloween-night.json      # 1. Edit
 
 ---
 
-## 📦 Publishing
-
-See the full publishing guide: **[docs/PUBLISH.md](./docs/PUBLISH.md)**
-
-Quick reference:
-
-```bash
-# 1. Fork zed-industries/extensions
-# 2. Clone your fork
-# 3. Add this repo as a submodule
-# 4. Register in extensions.toml
-# 5. pnpm sort-extensions
-# 6. Open a PR
-```
-
----
-
 ## 📁 Project Structure
 
 ```
